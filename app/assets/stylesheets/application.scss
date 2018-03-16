@@ -1,0 +1,54 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "variables.scss";
+
+body, html {
+  @extend %fullPage;
+  margin: 0;
+}
+
+.alert, .notice {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+}
+
+/* Menu */
+.projects {
+  height: 100%;
+  .col-md-3, .container {
+    height: 100%;
+  }
+  .col-md-3, .col-md-9 {
+    padding: 0 !important;  
+  }  
+}
+
+.menu {
+  margin: 0;
+  background-image: url(asset-path('landpage.jpeg'));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+.overlay {
+  @extend %fullPage;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $primary-color;
+  opacity: 0.6;
+}
+
+.logo {
+  margin: 0 auto !important;
+  width: 10%;
+  max-width: 100%;
+  height: auto;
+}
+
+

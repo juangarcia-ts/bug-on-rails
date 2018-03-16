@@ -1,0 +1,34 @@
+div.row.projects
+  div.col-md-3
+    = render 'layouts/menu'
+
+  div.col-md-9
+    div.container.text-center
+      h1 Meus Projetos
+
+      - if @projects.length == 0
+          p Não há projetos no momento
+      - else
+          // Separação dos projetos de 3 em 3 para fazer o grid no Bootstrap
+          - @projects.each_slice(3) do |projects|
+            div.row            
+              - projects.each do |project|
+                // Estilização de cada projeto
+                div.col-md-4
+                  h3 = project.name
+                  p = project.description if project.description.length > 0
+                  // Botão dropdown com as opções
+                  div.btn-group
+                    button.btn.btn-default.dropdown-toggle type="button" data-toggle="dropdown" Opções
+                    ul class="dropdown-menu"
+                      li 
+                        a = link_to 'Show', project
+                  
+                      li 
+                        a = link_to 'Edit', edit_project_path(project)
+                      // Divisor
+                      li role="separator" class="divider"
+                      li
+                        a = link_to 'Destroy', project, data: { confirm: 'Are you sure?' }, method: :delete                  
+
+      

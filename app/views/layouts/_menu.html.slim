@@ -1,0 +1,7 @@
+div.menu    
+div.overlay
+    div.container
+        = image_tag 'logo.png', :alt => 'logo', :class => 'logo'
+        = link_to 'New Project', new_project_path
+        = link_to 'Sign Out', destroy_user_session_path, method: :delete
+        

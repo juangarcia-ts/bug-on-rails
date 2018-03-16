@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @bug.title
+p
+  strong Description:
+  = @bug.description
+p
+  strong Is fixed:
+  = @bug.is_fixed
+p
+  strong Project:
+  = @bug.project_id
+
+=> link_to 'Edit', edit_bug_path(@bug)
+'|
+=< link_to 'Back', bugs_path
