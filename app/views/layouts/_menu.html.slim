@@ -1,7 +1,15 @@
 div.menu    
 div.overlay
     div.container
+        // Logo e Título
         = image_tag 'logo.png', :alt => 'logo', :class => 'logo'
-        = link_to 'New Project', new_project_path
-        = link_to 'Sign Out', destroy_user_session_path, method: :delete
+        h1.title.text-center Bug On Rails
+        // Divisor
+        hr.divider.custom_divider
+        // Links
+        ul.options
+          li    
+            a = link_to 'New Project', new_project_path
+          li
+            a = link_to 'Sign Out', destroy_user_session_path, method: :delete
         

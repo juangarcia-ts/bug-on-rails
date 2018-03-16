@@ -2,7 +2,8 @@ h1 New project
 
 == semantic_form_for @project do |f|
   = f.input :name, :label => 'Nome'
-  = f.input :description, :label => 'Descrição'
+  = f.input :short_description, :label => 'Resumo do Projeto'
+  = f.input :description, :label => 'Descrição Completa'
   = f.hidden_field :user_id
   = f.action :submit, :as => :button
   = f.action :cancel, :as => :link
