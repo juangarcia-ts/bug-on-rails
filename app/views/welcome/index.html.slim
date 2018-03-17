@@ -1,0 +1,8 @@
+div.welcome
+div.overlay-bg
+div.content.text-center
+    = image_tag 'logo.png', :alt => 'logo', :class => 'logo'
+    h1 Bug on Rails
+    h3 Mantenha um registro dos bugs em seu projeto e integre diretamente com o Slack
+    = link_to 'Cadastre-se', new_user_registration_path, class: 'btn sign-up'
+    = link_to 'Entrar', new_user_session_path, class: 'btn sign-in'

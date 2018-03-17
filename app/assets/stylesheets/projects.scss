@@ -1,6 +1,6 @@
-/***************
-     INDEX
-***************/
+/************
+    Index
+*************/
 .projects {
   height: 100%;
   .col-md-3, .container, .col-md-9 {
@@ -44,7 +44,7 @@
 }
 
 /***************
-  NEW PROJECT
+  Novo projeto
 ***************/
 .custom_form {
   max-width: 40%;
@@ -62,4 +62,13 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+}
+
+/***********
+    Bugs
+***********/
+.bug-card{
+  border: 1px solid $details_color;
+  max-width: 40%;
+  margin: 5% auto;
 }

@@ -1,3 +1,13 @@
-// Place all the styles related to the Bugs controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.bugs {
+    height: 100%;
+    .col-md-3, .container, .col-md-9 {
+      height: 100%;
+      padding: 0;
+    }
+    .col-md-9 {
+      padding: 3% 0 !important;
+    }  
+    .container {
+      width: 100%;
+    }
+}

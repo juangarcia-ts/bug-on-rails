@@ -4,12 +4,8 @@ $secondary_color: #FFF;
 $details_color: #FF8A80;  
 
 /* Breakpoints */
-$screen-sm-min: 768px;
-$screen-xs-max: ($screen-sm-min - 1);
-$screen-md-min: 992px;
-$screen-sm-max: ($screen-md-min - 1);
-$screen-lg-min: 1200px;
-$screen-md-max: ($screen-lg-min - 1);
+$tablet: "(min-width: 768px)";
+$desktop: "(min-width: 1024px)";
 
 /* Extends */
 %fullPage {

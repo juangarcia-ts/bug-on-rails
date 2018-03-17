@@ -1,6 +1,14 @@
 class BugsController < ApplicationController
   before_action :set_bug, only: [:show, :edit, :update, :destroy]
 
+  def initialize   
+    super
+    @notifier = Slack::Notifier.new "https://hooks.slack.com/services/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" do
+    defaults channel: "#desafio-dev-juan",
+              username: "notifier"
+    end
+  end
+
   # GET /bugs
   # GET /bugs.json
   def index
@@ -27,10 +35,15 @@ class BugsController < ApplicationController
   # POST /bugs.json
   def create
     @bug = Bug.new(bug_params)
-    @bug.project_id = Project.find(params[:project_id]).id
+    @project = Project.find(params[:project_id])
+    @bug.project_id = @project.id
 
     respond_to do |format|
       if @bug.save
+        # Notificar a criação no Slack
+        message = "#{current_user.email} adicionou o bug \"#{@bug.title}\" ao projeto \"#{@project.name}\""
+        @notifier.ping message
+
         format.html { redirect_to user_project_url(current_user.id, params[:project_id]), notice: 'Bug was successfully created.' }
         format.json { render :show, status: :created, location: @bug }
       else
@@ -43,9 +56,22 @@ class BugsController < ApplicationController
   # PATCH/PUT /bugs/1
   # PATCH/PUT /bugs/1.json
   def update
+    @bug = Bug.find(params[:id])
+    @project = Project.find(params[:project_id])
+    
+    old_status = @bug.is_fixed
+
     respond_to do |format|
       if @bug.update(bug_params)
-        format.html { redirect_to @bug, notice: 'Bug was successfully updated.' }
+        # Checar se o status do bug mudou
+        if @bug.is_fixed != old_status
+          status = { true => "Corrigido", false => "Não corrigido"}
+          # Caso tenha mudado, notificar no Slack
+          message = "#{current_user.email} alterou o status do bug \"#{@bug.title}\" (#{@project.name}) para #{status[@bug.is_fixed]}"
+          @notifier.ping message
+        end
+
+        format.html { redirect_to user_project_path(current_user.id, params[:project_id]), notice: 'Bug was successfully updated.' }
         format.json { render :show, status: :ok, location: @bug }
       else
         format.html { render :edit }

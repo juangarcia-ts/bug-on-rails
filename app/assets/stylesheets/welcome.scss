@@ -1,0 +1,64 @@
+@import "variables.scss";
+
+.welcome {
+  @extend %fullPage;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url(asset-path('welcome.jpeg'));
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.overlay-bg {
+  @extend %fullPage;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  opacity: 0.7;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ;
+}
+
+.content {
+  top: 15%;
+  left: 3%;
+  position: absolute;
+  z-index: 3;
+  opacity: 1;
+  color: $secondary_color;
+
+  @media #{$tablet} {
+    max-width: 35%;
+  }
+
+  h1 {
+    font-size: ( 2 * $font-size-h1)
+  }
+
+  .btn {
+    background-color: transparent;
+    color: $secondary_color;    
+    border: 1px solid $secondary_color; 
+    font-size: $font-size-h3;
+
+    &:hover{
+      background-color: $secondary_color;
+      color: #000;
+    }
+  }
+
+  .sign-up{
+    margin-top: 3%;
+  }
+
+  .sign-in{
+    position: fixed;
+    top: 5%;
+    right: 10%;
+  }
+}
+

@@ -10,8 +10,26 @@ div.row.projects
         p = @project_description
       = link_to 'Adicionar bug', new_user_project_bug_path(current_user.id, @project.id)
 
-      - @bugs.each do |bug|
-        p = bug.title
-            
+      div.row
+        div.col-md-6.col-lg-6
+          h1 Corrigidos
+          - if @bugs_fixed.length > 0
+            - @bugs_fixed.each do |bug|          
+              div.bug-card
+                h3 = bug.title
+                p = bug.description if bug.description != nil               
+                = link_to "Editar", edit_user_project_bug_path(current_user.id, @project.id, bug.id)
+          - else 
+            p Não há bugs corrigidos
 
+        div.col-md-6.col-lg-6
+          h1 Não corrigidos
+          - if @bugs_not_fixed.length > 0          
+            - @bugs_not_fixed.each do |bug|          
+              div.bug-card
+                h3 = bug.title
+                p = bug.description if bug.description != nil               
+                = link_to "Editar", edit_user_project_bug_path(current_user.id, @project.id, bug.id)
+          - else
+            p Não há bugs não corrigidos
       

@@ -13,6 +13,12 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @bugs = @project.bugs
+    #Filtrar bugs corrigidos
+    @bugs_fixed , @bugs_not_fixed = [], []
+    @bugs.each do |bug|      
+      @bugs_fixed << bug if bug.is_fixed? == true
+      @bugs_not_fixed << bug if bug.is_fixed? == false
+    end
   end
 
   # GET /projects/new

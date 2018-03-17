@@ -2,27 +2,28 @@
 @import "bootstrap";
 @import "variables.scss";
 @import "projects.scss";
+@import "welcome.scss";
+@import "bugs.scss";
 
+/**************
+     Geral
+***************/
 body, html {
   @extend %fullPage;
   font-family: 'IBM Plex Mono', monospace;
   margin: 0;  
 }
 
-.alert, .notice {
-  position: absolute;
-  margin: 0;
-  padding: 0;
-}
-
 .custom_divider {
   max-width: 80% !important;
 }
 
-/* Menu */
+/**************
+     Menu 
+***************/
 .background {
   margin: 0;
-  background-image: url(asset-path('landpage.jpeg'));
+  background-image: url(asset-path('menu.jpeg'));
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -37,7 +38,7 @@ body, html {
   right: 0;
   bottom: 0;
   background-color: $primary-color;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .logo {
@@ -71,4 +72,51 @@ ul {
   }    
 }
 
+/**************
+Login e Cadastro
+***************/
+.devise-links{
+  color: $secondary_color;
 
+  &:hover{
+    color: $secondary_color;
+  }
+}
+
+.auth-page{
+  @extend %fullPage;
+  background-color: $primary_color;
+  color: $secondary_color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .title {
+    margin-bottom: 5%;
+  }
+
+  .input {
+    color: #000;
+  }
+
+  .logo {
+    width: 50%;
+  }
+
+  .remember-me {
+    margin-left: 5%;
+  }
+
+  .submit-button {
+    font-size: $font-size-h4;
+    padding: 2.5% 5%;
+    margin: 5%;
+    background-color: transparent;
+    border: 1px solid $secondary_color;
+
+    &:hover {
+      background-color: $secondary_color;
+      color: $primary_color;
+    }
+  }
+}
