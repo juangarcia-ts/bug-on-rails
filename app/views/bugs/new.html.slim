@@ -1,5 +1,15 @@
-h1 New bug
+div.row.projects
+  = render 'layouts/menu'
 
-== render 'form'
-
-= link_to 'Back', bugs_path
+  div.col-md-9
+    div.container
+      h1.text-center Adicionar bug em #{@project.name}
+      == semantic_form_for @bug, url: user_project_bugs_path(current_user.id, @project.id) do |f|
+        div.form-group.custom_form
+          = f.input :title, :label => 'Nome', :input_html => { :class => "form-control" }
+          = f.input :description, :label => 'Descrição', :input_html => { :class => "form-control autogrow", :rows => 8}
+          = f.input :is_fixed, :as => :boolean, :label => 'Corrigido ?'
+          = f.hidden_field :project_id
+          div.button-group
+            = f.action :cancel, :label => 'Cancelar', :as => :link
+            = f.action :submit, :label => 'Criar projeto', :as => :button

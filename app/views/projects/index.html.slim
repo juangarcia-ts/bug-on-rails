@@ -1,36 +1,39 @@
 div.row.projects
-  div.col-md-3
-    = render 'layouts/menu'
+  = render 'layouts/menu'
 
   div.col-md-9
     div.container.text-center
       h1 Meus Projetos (#{@projects.length})
+
+      // Modal de adição/edição
+      div#modal-wrapper
 
       - if @projects.length == 0
           p Não há projetos no momento
       - else
           // Separação dos projetos de 3 em 3 para fazer o grid no Bootstrap
           - @projects.each_slice(3) do |projects|
-            div.project_wrapper.row         
-              - projects.each do |project|
-                  // Estilização de cada projeto
-                  div.col-md-4.project_card.row    
-                    // Título          
-                    h3 = project.name 
-                    // Botão dropdown com as opções
-                    div.btn-group.col-md-2.options_button
-                      button.btn.btn-default.dropdown-toggle type="button" data-toggle="dropdown"
-                        span.glyphicon.glyphicon-cog aria-hidden="true"
-                      ul class="dropdown-menu"
-                        li 
-                          a = link_to 'Show', project                    
-                        li 
-                          a = link_to 'Edit', edit_project_path(project)
-                        // Divisor
-                        li role="separator" class="divider"
-                        li
-                          a = link_to 'Destroy', project, data: { confirm: 'Are you sure?' }, method: :delete      
-                    // Descrição curta
-                    p = project.short_description          
+            div.project-wrapper.row         
+              - projects.each do |project|                
+                    // Estilização de cada projeto
+                    div.col-md-4.project-card.row
+                      = link_to user_project_path(current_user.id, project.id), class: "project-anchor" do
+                        // Título          
+                        h3 = project.name                         
+                        // Descrição curta
+                        p = project.short_description  
+                        // Botão dropdown com as opções
+                      div.btn-group.col-md-2.options-button
+                        button.btn.btn-default.dropdown-toggle type="button" data-toggle="dropdown"
+                          span.glyphicon.glyphicon-cog aria-hidden="true"
+                        ul class="dropdown-menu"
+                          li 
+                            a = link_to 'Visualizar', user_project_url(current_user.id, project.id)              
+                          li 
+                            a = link_to 'Editar', edit_user_project_path(current_user.id, project.id )
+                          // Divisor
+                          li role="separator" class="divider"
+                          li
+                            a = link_to 'Excluir', user_project_url(current_user.id, project.id), data: { confirm: 'Tem certeza?' }, method: :delete              
 
       

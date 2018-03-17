@@ -1,3 +1,13 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+###
+(($) ->  
+    ) jQuery
+
+hide_element = (element) ->
+    $(element).hide()
+show_element = (element) ->
+    $(element).show()
+
+$('#menu-trigger').click ->
+    console.log('oi');
+    return false
+###

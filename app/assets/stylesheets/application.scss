@@ -20,7 +20,7 @@ body, html {
 }
 
 /* Menu */
-.menu {
+.background {
   margin: 0;
   background-image: url(asset-path('landpage.jpeg'));
   background-position: center;
@@ -53,11 +53,15 @@ body, html {
   color: $secondary_color;
 }
 
+ul {
+  padding-left: 0 !important;
+}
+
 .options li{  
   list-style-type: none;
     
   a {
-    font-size: $font-size-large;
+    font-size: $font-size-h3;
     color: $secondary_color;
     font-weight: $close-font-weight;
 

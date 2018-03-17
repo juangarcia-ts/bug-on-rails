@@ -1,15 +1,17 @@
-p#notice = notice
+div.row.projects
+  = render 'layouts/menu'
 
-p
-  strong Name:
-  = @project.name
-p
-  strong Description:
-  = @project.description
-p
-  strong User:
-  = @project.user_id
+  div.col-md-9
+    div.container.text-center
+      h1 #{@project.name}
+      if @project.description == nil
+        p = @project.short_description
+      else
+        p = @project_description
+      = link_to 'Adicionar bug', new_user_project_bug_path(current_user.id, @project.id)
 
-=> link_to 'Edit', edit_project_path(@project)
-'|
-=< link_to 'Back', projects_path
+      - @bugs.each do |bug|
+        p = bug.title
+            
+
+      

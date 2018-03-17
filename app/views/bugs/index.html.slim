@@ -18,10 +18,8 @@ table
         td = bug.description
         td = bug.is_fixed
         td = bug.project_id
-        td = link_to 'Show', bug
-        td = link_to 'Edit', edit_bug_path(bug)
-        td = link_to 'Destroy', bug, data: { confirm: 'Are you sure?' }, method: :delete
+        td = link_to 'Show', user_project_bug_url(current_user.id, @project, bug.id)
+        td = link_to 'Edit', edit_user_project_bug_path(current_user.id, @project, bug.id)
+        td = link_to 'Destroy', user_project_bug_url(current_user.id, @project, bug.id), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
-
-= link_to 'New Bug', new_bug_path

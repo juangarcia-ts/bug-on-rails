@@ -4,7 +4,8 @@ class BugsController < ApplicationController
   # GET /bugs
   # GET /bugs.json
   def index
-    @bugs = Bug.all
+    @bugs = Bug.where(project_id: params[:project_id])
+    @project = params[:project_id]
   end
 
   # GET /bugs/1
@@ -15,6 +16,7 @@ class BugsController < ApplicationController
   # GET /bugs/new
   def new
     @bug = Bug.new
+    @project = Project.find(params[:project_id])
   end
 
   # GET /bugs/1/edit
@@ -25,10 +27,11 @@ class BugsController < ApplicationController
   # POST /bugs.json
   def create
     @bug = Bug.new(bug_params)
+    @bug.project_id = Project.find(params[:project_id]).id
 
     respond_to do |format|
       if @bug.save
-        format.html { redirect_to @bug, notice: 'Bug was successfully created.' }
+        format.html { redirect_to user_project_url(current_user.id, params[:project_id]), notice: 'Bug was successfully created.' }
         format.json { render :show, status: :created, location: @bug }
       else
         format.html { render :new }
@@ -56,7 +59,7 @@ class BugsController < ApplicationController
   def destroy
     @bug.destroy
     respond_to do |format|
-      format.html { redirect_to bugs_url, notice: 'Bug was successfully destroyed.' }
+      format.html { redirect_to user_project_bugs_url, notice: 'Bug was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

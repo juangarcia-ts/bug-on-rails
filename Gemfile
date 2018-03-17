@@ -21,6 +21,7 @@ gem 'formtastic', '~> 3.0'
 gem 'slim-rails'
 gem 'devise'
 gem 'html2slim'
+gem 'slack-notifier'
 
 group :development, :test do  
   gem 'byebug', platform: :mri
