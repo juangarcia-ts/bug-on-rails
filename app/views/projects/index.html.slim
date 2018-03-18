@@ -19,9 +19,12 @@ div.row.projects
                     div.col-md-4.project-card.row
                       = link_to user_project_path(current_user.id, project.id), class: "project-anchor" do
                         // Título          
-                        h3 = project.name                         
+                        h3 = project.name    
+                        hr.divider                     
                         // Descrição curta
                         p = project.short_description  
+                        hr.divider  
+                        p Criado em #{project.created_at}
                         // Botão dropdown com as opções
                       div.btn-group.col-md-2.options-button
                         button.btn.btn-default.dropdown-toggle type="button" data-toggle="dropdown"

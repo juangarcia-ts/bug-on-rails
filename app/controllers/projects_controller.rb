@@ -5,7 +5,8 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.where(user_id: current_user.id)
+    # Ordenar por mais recentes
+    @projects = Project.where(user_id: current_user.id).order('projects.created_at DESC') 
   end
 
   # GET /projects/1

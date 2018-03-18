@@ -1,31 +1,25 @@
 div.auth-page
-  div.form-group.text-center
+  div.form-group
     = image_tag 'logo.png', :alt => 'logo', :class => 'logo'
-    h1.title Cadastre-se   
-    == form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      .field
-        = f.label :email
-        br
-        = f.email_field :email, autofocus: true, autocomplete: "email", class: "input"
-      .field
-        = f.label :password
-        - if @minimum_password_length
-          em
-            | (
-            = @minimum_password_length
-            |  characters minimum)
-        br
-        = f.password_field :password, autocomplete: "off", class: "input"
-      .field
-        = f.label :password_confirmation
-        br
-        = f.password_field :password_confirmation, autocomplete: "off", class: "input"
-      .actions
-        = f.submit "Criar conta", class: "submit-button"
+    h1.text-center.title Cadastre-se   
+    == semantic_form_for(resource, as: resource_name, url: user_registration_path) do |f|
+      div.form-group
+        = f.input :email, :label => 'Email', :input_html => { :class => "form-control" }        
+        = f.input :username, :label => 'Nome de usuário', :input_html => { :class => "form-control" }        
+        = f.input :password, :label => 'Senha', :input_html => { :class => "form-control" }        
+          = f.label :password
+          - if @minimum_password_length
+            em
+              | (
+              = @minimum_password_length
+              |  characters minimum)
+        = f.input :password_confirmation, :label => 'Confirmação de senha', :input_html => { :class => "form-control" }  
+        = f.action :submit, :label => 'Criar conta', :as => :button, :button_html => { :class => "submit-button text-center center-block"}
         
     p 
       = notice
     p 
       = alert
-      
-    = render "devise/shared/links"
+
+    div.text-center 
+      = render "devise/shared/links"

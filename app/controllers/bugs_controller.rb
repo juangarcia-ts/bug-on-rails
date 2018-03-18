@@ -41,7 +41,7 @@ class BugsController < ApplicationController
     respond_to do |format|
       if @bug.save
         # Notificar a criação no Slack
-        message = "#{current_user.email} adicionou o bug \"#{@bug.title}\" ao projeto \"#{@project.name}\""
+        message = "#{current_user.username} adicionou o bug \"#{@bug.title}\" ao projeto \"#{@project.name}\""
         @notifier.ping message
 
         format.html { redirect_to user_project_url(current_user.id, params[:project_id]), notice: 'Bug was successfully created.' }
@@ -67,7 +67,7 @@ class BugsController < ApplicationController
         if @bug.is_fixed != old_status
           status = { true => "Corrigido", false => "Não corrigido"}
           # Caso tenha mudado, notificar no Slack
-          message = "#{current_user.email} alterou o status do bug \"#{@bug.title}\" (#{@project.name}) para #{status[@bug.is_fixed]}"
+          message = "#{current_user.username} alterou o status do bug \"#{@bug.title}\" (#{@project.name}) para #{status[@bug.is_fixed]}"
           @notifier.ping message
         end
 

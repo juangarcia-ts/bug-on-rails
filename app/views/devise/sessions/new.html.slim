@@ -2,21 +2,13 @@ div.auth-page
   div.form-group.text-center
     = image_tag 'logo.png', :alt => 'logo', :class => 'logo'
     h1.title Entrar   
-    == form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      .field
-        = f.label :email
-        br
-        = f.email_field :email, autofocus: true, autocomplete: "email", class: "input"
-      .field
-        = f.label :password
-        br
-        = f.password_field :password, autocomplete: "off", class: "input"
-      - if devise_mapping.rememberable?
-        .field
+    == semantic_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = f.input :email, :label => 'Email', :input_html => { :class => "form-control" }              
+      = f.input :password, :label => 'Senha', :input_html => { :class => "form-control" }        
+      - if devise_mapping.rememberable? 
           = f.check_box :remember_me
           = f.label :remember_me, class: "remember-me"
-      .actions
-        = f.submit "Entrar", class: "submit-button"
+      =  f.action :submit, :label => 'Entrar', :as => :button, :button_html => { :class => "submit-button text-center center-block"}
         
     p 
       = notice

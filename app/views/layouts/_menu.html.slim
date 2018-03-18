@@ -1,20 +1,24 @@
-div.col-md-3.col-lg-3#menu
+div.col-md-3.col-lg-3
   div.background
   div.overlay
-      div.container
-          // Logo e Título
-          = image_tag 'logo.png', :alt => 'logo', :class => 'logo'
-          h1.title.text-center Bug On Rails
-          // Divisor
-          hr.divider.custom_divider          
-          // Links
-          ul.options.text-center
-            li    
-              a = link_to 'Início', user_projects_path(current_user.id)
-            li    
-              a = link_to 'Novo Projeto', new_user_project_path(current_user.id)
-            li
-              a = link_to 'Logout', destroy_user_session_path, method: :delete
+    div.container
+        // Logo e Título
+        = image_tag 'logo.png', :alt => 'logo', :class => 'logo'
+        h1.title.text-center Bug On Rails
+        // Divisor
+        hr.divider.custom_divider 
+        // Identificação do Usuário
+        p.profile.text-center Você está logado como #{current_user.username}         
+        // Links
+        ul.options.text-center
+          li    
+            a = link_to 'Início', user_projects_path(current_user.id)
+          li    
+            a = link_to 'Novo Projeto', new_user_project_path(current_user.id)           
+          li
+            a = link_to 'Editar perfil', edit_user_registration_path(current_user.id), method: :get
+          li
+            a = link_to 'Logout', destroy_user_session_path, method: :delete
 
 //button#menu-trigger type='button'
   span.glyphicon.glyphicon-menu-hamburger aria-hidden="true"              

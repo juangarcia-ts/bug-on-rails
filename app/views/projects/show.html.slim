@@ -3,13 +3,17 @@ div.row.projects
 
   div.col-md-9
     div.container.text-center
-      h1 #{@project.name}
+      h1.project-name #{@project.name}
       if @project.description == nil
-        p = @project.short_description
+        p.project-description = @project.short_description
       else
-        p = @project_description
-      = link_to 'Adicionar bug', new_user_project_bug_path(current_user.id, @project.id)
-
+        p.project-description = @project_description
+      = link_to new_user_project_bug_path(current_user.id, @project.id) do
+        button.btn.btn-default.add-button type="button"
+          span.glyphicon.glyphicon-plus aria-hidden="true"
+          p Adicionar bug
+      hr.divider
+      
       div.row
         div.col-md-6.col-lg-6
           h1 Corrigidos

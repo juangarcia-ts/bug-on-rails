@@ -16,6 +16,20 @@ body, html {
 
 .custom_divider {
   max-width: 80% !important;
+  background-color: $secondary_color;
+}
+
+.notice, .alert {
+  color: $error_color;
+}
+
+.field_with_errors { 
+  display: inline;
+  color: $error_color;
+}
+
+.form-group {
+  list-style-type: none;
 }
 
 /**************
@@ -39,6 +53,10 @@ body, html {
   bottom: 0;
   background-color: $primary-color;
   opacity: 0.7;
+
+  .content {
+    opacity: 1 !important;
+  }
 }
 
 .logo {
@@ -54,12 +72,22 @@ body, html {
   color: $secondary_color;
 }
 
+.profile {
+  font-size: $font-size-h5;
+  color: $secondary_color;
+}
+
 ul {
   padding-left: 0 !important;
 }
 
 .options li{  
   list-style-type: none;
+  margin-top: 4%;
+
+  &:first-child {
+    margin-top: 8%;
+  }
     
   a {
     font-size: $font-size-h3;
@@ -108,9 +136,9 @@ Login e Cadastro
   }
 
   .submit-button {
+    margin: 5% auto;
     font-size: $font-size-h4;
     padding: 2.5% 5%;
-    margin: 5%;
     background-color: transparent;
     border: 1px solid $secondary_color;
 
