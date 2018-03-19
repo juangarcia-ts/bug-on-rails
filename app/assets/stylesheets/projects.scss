@@ -102,6 +102,10 @@
 
 .project-page {
   max-width: 80%;
+
+  @media #{$phone} {
+    max-width: 95%;
+  }
 }
 
 .add-button {
@@ -163,6 +167,23 @@
 .bug-card{
   border: 1px solid $details_color;
   margin: 3% 2%;
+  list-style-type: none;
+
+  h3 {
+    margin-top: 1.5%;
+  }
+
+  .bug-status {
+    margin-top: 5%;    
+  }
+
+  .done {
+    color: green;
+  }
+
+  .doing {
+    color: red;
+  }
 }
 
 .bug-alert {
@@ -171,4 +192,20 @@
 
 .bug-anchor{
   color: $primary_color;
+
+  &:hover {
+    color: $primary_color;
+  }
+}
+
+.status-link {
+  list-style-type: none;
+  color: $primary_color;
+  background-color: transparent;
+  border: none;
+  margin-bottom: 5%;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

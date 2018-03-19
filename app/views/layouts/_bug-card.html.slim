@@ -1,0 +1,18 @@
+div.bug-card.col-sm-3
+    - if bug.is_fixed == true 
+        p.bug-status.done CORRIGIDO
+    - else
+        p.bug-status.doing A CORRIGIR
+    h3 = bug.title
+    p = bug.description if bug.description != nil
+
+    // Alterar status do bug sem a view de edição
+    == semantic_form_for bug, url: user_project_bug_path(current_user.id, project.id, bug.id) do |f|
+        = f.hidden_field :is_fixed, value: !bug.is_fixed
+        - if bug.is_fixed == true 
+            = f.action :submit, :label => 'Marcar como não corrigido', :as => :button, :button_html => { :class => "status-link" }
+        - else
+            = f.action :submit, :label => 'Marcar como corrigido', :as => :button, :button_html => { :class => "status-link" }
+            
+    p = link_to "Editar informações", edit_user_project_bug_path(current_user.id, @project.id, bug.id), class: "bug-anchor"
+    p = link_to "Excluir bug", user_project_bug_path(current_user.id, @project.id, bug.id), method: :delete, class: "bug-anchor" 

@@ -5,8 +5,7 @@ div.row.bugs
     == semantic_form_for @bug, url: user_project_bug_path(current_user.id, params[:project_id], @bug.id) do |f|
         div.form-group.custom_form
           = f.input :title, :label => 'Nome', :input_html => { :class => "form-control" }
-          = f.input :description, :label => 'Descrição', :input_html => { :class => "form-control autogrow", :rows => 8}
-          = f.input :is_fixed, :as => :boolean, :label => 'Corrigido ?'
+          = f.input :description, :label => 'Descrição', :input_html => { :class => "form-control autogrow", :rows => 8}          
           = f.hidden_field :project_id
           div.button-group
             = f.action :cancel, :label => 'Cancelar', :as => :link

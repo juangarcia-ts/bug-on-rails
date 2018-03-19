@@ -21,12 +21,13 @@ div.row.projects
                 |  characters minimum
           = f.input :password_confirmation, :label => 'Confirmação de senha', :input_html => { :class => "form-control" }  
           = f.input :current_password, :label => 'Senha atual (Necessária para confirmar alterações)', :input_html => { :class => "form-control" }  
-          = f.action :submit, :label => 'Alterar', :as => :button, :button_html => { :class => "center-block"}
+          div.button-group
+            = f.action :submit, :label => 'Alterar', :as => :button
       hr.divider
-      div.text-center
+      div.text-center.center-block
         h1
           | Excluir conta      
-        p 
+        p
           | Cancele sua conta no botão abaixo
-        = button_to "Confirmar exclusão", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
-        = link_to "Voltar", :back
+        = button_to "Confirmar exclusão", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete   
+        = link_to "Voltar", :back     

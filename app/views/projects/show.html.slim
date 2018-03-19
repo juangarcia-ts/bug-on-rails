@@ -13,42 +13,33 @@ div.row.projects
         li.nav-item.active
           a.nav-link data-toggle="tab" href='#todos' Todos
         li.nav-item
-          a.nav-link data-toggle="tab" href='#corrigidos' Corrigidos
+          a.nav-link data-toggle="tab" href='#nao-corrigidos' A corrigir
         li.nav-item
-          a.nav-link data-toggle="tab" href='#nao-corrigidos' Não corrigidos
+          a.nav-link data-toggle="tab" href='#corrigidos' Corrigidos
+        
 
       div.tab-content.row
       
         div#todos class="tab-pane fade in active"
           - if @bugs.length > 0
             - @bugs.each do |bug|
-              div.bug-card.col-sm-3
-                h3 = bug.title
-                p = bug.description if bug.description != nil               
-                p = link_to "Editar", edit_user_project_bug_path(current_user.id, @project.id, bug.id), class: "bug-anchor"
-                p = link_to "Excluir", user_project_bug_path(current_user.id, @project.id, bug.id), method: :delete, class: "bug-anchor"
+              = render 'layouts/bug-card', bug: bug, project: @project
           - else
             h3.bug-alert Não há bugs
+
+        div#nao-corrigidos class="tab-pane fade in"
+          - if @bugs_not_fixed.length > 0          
+            - @bugs_not_fixed.each do |bug| 
+                = render 'layouts/bug-card', bug: bug, project: @project
+          - else
+            h3.bug-alert Não há bugs não corrigidos  
 
         div#corrigidos class="tab-pane fade in"
           - if @bugs_fixed.length > 0
             - @bugs_fixed.each do |bug|          
-              div.bug-card.col-sm-3
-                h3 = bug.title
-                p = bug.description if bug.description != nil               
-                p = link_to "Editar", edit_user_project_bug_path(current_user.id, @project.id, bug.id), class: "bug-anchor"
-                p = link_to "Excluir", user_project_bug_path(current_user.id, @project.id, bug.id), method: :delete, class: "bug-anchor"
+                = render 'layouts/bug-card', bug: bug, project: @project
           - else 
             h3.bug-alert Não há bugs corrigidos
-        div#nao-corrigidos class="tab-pane fade in"
 
-          - if @bugs_not_fixed.length > 0          
-            - @bugs_not_fixed.each do |bug|          
-              div.bug-card.col-sm-3
-                h3 = bug.title
-                p = bug.description if bug.description != nil               
-                p = link_to "Editar", edit_user_project_bug_path(current_user.id, @project.id, bug.id), class: "bug-anchor"
-                p = link_to "Excluir", user_project_bug_path(current_user.id, @project.id, bug.id), method: :delete, class: "bug-anchor"
-          - else
-            h3.bug-alert Não há bugs não corrigidos      
+            
       
