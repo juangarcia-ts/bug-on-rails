@@ -85,7 +85,7 @@ class BugsController < ApplicationController
   def destroy
     @bug.destroy
     respond_to do |format|
-      format.html { redirect_to user_project_bugs_url, notice: 'Bug was successfully destroyed.' }
+      format.html { redirect_to user_project_path(params[:project_id]), notice: 'Bug was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -93,7 +93,11 @@ class BugsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bug
-      @bug = Bug.find(params[:id])
+      begin
+        @bug = Bug.find(params[:id])
+      rescue Expection => e
+        puts e.message
+      end      
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

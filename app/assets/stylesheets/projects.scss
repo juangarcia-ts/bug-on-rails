@@ -1,21 +1,39 @@
 /************
     Index
 *************/
+.page-title{
+  @media #{$phone} {
+    margin-top: 12.5%;
+  }
+}
+
 .projects {
   height: 100%;
+
+  @media #{$phone} {
+    padding: 0 5%;
+  }
+
   .col-md-3, .container, .col-md-9 {
     height: 100%;
     padding: 0;
   }
+
   .col-md-9 {
     padding: 3% 0 !important;
   }  
+
   .container {
     width: 100%;
   }
 
-  .project-name {
-    font-size: ($font-size-h1 * 2);
+  .project-name {    
+    font-size: ($font-size-h1 * 2); 
+    
+    @media #{$phone} {
+      font-size: $font-size-h1; 
+      
+    }
   }
 
   .project-description {
@@ -25,16 +43,52 @@
 }
 
 .project-wrapper {
-  height: auto;
-  padding: 3% 8%;
+  padding: 3% 25%;
+
+  @media #{$phone} {
+    padding: 3% 12.5%;    
+  }
 }
 
 .project-card {
-  margin: 0 1%;
-  width: 30%;
-  height: 100% !important;
+  margin: 0 auto;
   border: 1px solid $details-color;
+  margin: 1.5% 0%;
 
+  @media #{$phone} {
+    margin: 3% 0;    
+  }
+
+  .card-left {
+    border-right: 1px solid #e5e5e5;
+  }
+
+  .card-right {
+    ul {
+      list-style-type: none;
+      text-align: left !important;
+
+      @media #{$phone} {
+        text-align: center !important; 
+      }
+
+      li {
+        margin: 10% 0%;
+
+        &:first-child{
+          margin-top: 30%;
+
+          @media #{$phone} {
+            margin-top: 10%;   
+          }
+        }
+
+        a {
+          color: $primary_color;
+        }
+      }      
+    }
+  }
 }
 
 .project-anchor{
@@ -46,12 +100,18 @@
   }
 }
 
+.project-page {
+  max-width: 80%;
+}
+
 .add-button {
+  z-index: 999;
+  border: 0.1px solid #000;
   background-color: $primary-color;
   color: $secondary-color;
-  position: absolute;
-  bottom: 5%;
-  right: 5%;
+  position: fixed;
+  bottom: 3%;
+  right: 3%;
   padding: 0.5% 1.5% 0% 1.5%;
   font-size: $font-size-h5;
 
@@ -72,8 +132,8 @@
 
 .options-button {
   position: absolute;
-  top: 5%;
-  right: 5%;
+  top: 7.5%;
+  right: 3.5%;
 }
 
 /***************
@@ -102,6 +162,13 @@
 ***********/
 .bug-card{
   border: 1px solid $details_color;
-  max-width: 40%;
-  margin: 5% auto;
+  margin: 3% 2%;
+}
+
+.bug-alert {
+  margin-top: 10%;
+}
+
+.bug-anchor{
+  color: $primary_color;
 }

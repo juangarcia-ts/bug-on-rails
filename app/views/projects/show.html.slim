@@ -2,38 +2,53 @@ div.row.projects
   = render 'layouts/menu'
 
   div.col-md-9
-    div.container.text-center
+    div.container.text-center.project-page
       h1.project-name #{@project.name}
-      if @project.description == nil
-        p.project-description = @project.short_description
-      else
-        p.project-description = @project_description
+      p.project-description = @project.short_description
       = link_to new_user_project_bug_path(current_user.id, @project.id) do
         button.btn.btn-default.add-button type="button"
-          span.glyphicon.glyphicon-plus aria-hidden="true"
           p Adicionar bug
-      hr.divider
+
+      ul.nav.nav-tabs
+        li.nav-item.active
+          a.nav-link data-toggle="tab" href='#todos' Todos
+        li.nav-item
+          a.nav-link data-toggle="tab" href='#corrigidos' Corrigidos
+        li.nav-item
+          a.nav-link data-toggle="tab" href='#nao-corrigidos' Não corrigidos
+
+      div.tab-content.row
       
-      div.row
-        div.col-md-6.col-lg-6
-          h1 Corrigidos
+        div#todos class="tab-pane fade in active"
+          - if @bugs.length > 0
+            - @bugs.each do |bug|
+              div.bug-card.col-sm-3
+                h3 = bug.title
+                p = bug.description if bug.description != nil               
+                p = link_to "Editar", edit_user_project_bug_path(current_user.id, @project.id, bug.id), class: "bug-anchor"
+                p = link_to "Excluir", user_project_bug_path(current_user.id, @project.id, bug.id), method: :delete, class: "bug-anchor"
+          - else
+            h3.bug-alert Não há bugs
+
+        div#corrigidos class="tab-pane fade in"
           - if @bugs_fixed.length > 0
             - @bugs_fixed.each do |bug|          
-              div.bug-card
+              div.bug-card.col-sm-3
                 h3 = bug.title
                 p = bug.description if bug.description != nil               
-                = link_to "Editar", edit_user_project_bug_path(current_user.id, @project.id, bug.id)
+                p = link_to "Editar", edit_user_project_bug_path(current_user.id, @project.id, bug.id), class: "bug-anchor"
+                p = link_to "Excluir", user_project_bug_path(current_user.id, @project.id, bug.id), method: :delete, class: "bug-anchor"
           - else 
-            p Não há bugs corrigidos
+            h3.bug-alert Não há bugs corrigidos
+        div#nao-corrigidos class="tab-pane fade in"
 
-        div.col-md-6.col-lg-6
-          h1 Não corrigidos
           - if @bugs_not_fixed.length > 0          
             - @bugs_not_fixed.each do |bug|          
-              div.bug-card
+              div.bug-card.col-sm-3
                 h3 = bug.title
                 p = bug.description if bug.description != nil               
-                = link_to "Editar", edit_user_project_bug_path(current_user.id, @project.id, bug.id)
+                p = link_to "Editar", edit_user_project_bug_path(current_user.id, @project.id, bug.id), class: "bug-anchor"
+                p = link_to "Excluir", user_project_bug_path(current_user.id, @project.id, bug.id), method: :delete, class: "bug-anchor"
           - else
-            p Não há bugs não corrigidos
+            h3.bug-alert Não há bugs não corrigidos      
       

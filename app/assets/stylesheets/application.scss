@@ -32,9 +32,44 @@ body, html {
   list-style-type: none;
 }
 
+.nav-link {
+  color: #000;
+
+  &:hover {
+    color: #000;
+  }
+}
+
+.affix{
+  @media #{$phone} {
+    all: initial;
+  }
+}
+
 /**************
      Menu 
 ***************/
+#menu {
+  @media #{$phone} {
+    display: none;
+  }
+}
+
+#menu-trigger{
+  position: absolute;
+  top: 1.5%;
+  left: 3%;
+  background-color: transparent;
+  color: $primary_color;
+  border: none;
+  font-size: $font-size-h2;
+  z-index: 99;
+
+  @media #{$tablet} {
+    display: none;
+  }
+}
+
 .background {
   margin: 0;
   background-image: url(asset-path('menu.jpeg'));
@@ -57,6 +92,10 @@ body, html {
   .content {
     opacity: 1 !important;
   }
+
+  .container {
+    padding: 0 12%;
+  }
 }
 
 .logo {
@@ -66,10 +105,17 @@ body, html {
   width: 30%;
   max-width: 100%;
   height: auto;
+
+  @media #{$phone} {
+    max-width: 80%;
+  }
 }
 
 .title {
   color: $secondary_color;
+  @media #{$phone} {
+    font-size: $font-size-h2;
+  }
 }
 
 .profile {

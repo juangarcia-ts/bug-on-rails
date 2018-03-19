@@ -4,11 +4,10 @@ div.row.projects
   div.col-md-9
     div.container
       h1.text-center Editar #{@project.name}
-      == semantic_form_for @project, url: edit_user_project_path(current_user.id, @project.id) do |f|
+      == semantic_form_for @project, url: user_project_path(current_user.id, @project.id) do |f|
         div.form-group.custom_form
           = f.input :name, :label => 'Nome', :input_html => { :class => "form-control" }
-          = f.input :short_description, :label => 'Resumo do Projeto', :input_html => { :class => "form-control", :rows => 4, :maxlength => 120 }
-          = f.input :description, :label => 'Descrição Completa', :input_html => { :class => "form-control  autogrow", :rows => 8}
+          = f.input :short_description, :label => 'Resumo do Projeto', :input_html => { :class => "form-control", :rows => 4, :maxlength => 120 }          
           = f.hidden_field :user_id
           div.button-group
             = f.action :cancel, :label => 'Cancelar', :as => :link
