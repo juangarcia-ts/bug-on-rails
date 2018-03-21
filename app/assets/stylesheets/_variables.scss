@@ -1,4 +1,8 @@
-/* Variables */
+/**********************
+ Estilos de uso global
+**********************/
+
+/* Variáveis */
 $primary_color: #FF5252;
 $secondary_color: #FFF;
 $details_color: #FF8A80;
@@ -9,7 +13,7 @@ $phone: "(max-width: 767px)";
 $tablet: "(min-width: 768px)";
 $desktop: "(min-width: 1024px)";
 
-/* Extends */
+/* Templates */
 %fullPage {
   height: 100%;
   width: 100%;

@@ -3,6 +3,7 @@ class BugsController < ApplicationController
 
   def initialize   
     super
+    # Inicialização do bot do Slack
     @notifier = Slack::Notifier.new "https://hooks.slack.com/services/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" do
     defaults channel: "#desafio-dev-juan",
               username: "notifier"
@@ -40,7 +41,7 @@ class BugsController < ApplicationController
 
     respond_to do |format|
       if @bug.save
-        # Notificar a criação no Slack
+        # Notificar a criação do bug no Slack
         message = "#{current_user.username} adicionou o bug \"#{@bug.title}\" ao projeto \"#{@project.name}\""
         @notifier.ping message
 
@@ -91,7 +92,6 @@ class BugsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_bug
       begin
         @bug = Bug.find(params[:id])
@@ -100,7 +100,6 @@ class BugsController < ApplicationController
       end      
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def bug_params
       params.require(:bug).permit(:title, :description, :is_fixed, :project_id)
     end

@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  description: MyText
+  short_description: MyText
   user_id: 1
 
 two:
-  name: MyString
-  description: MyText
+  name: MyString2
+  short_description: MyText2
   user_id: 1

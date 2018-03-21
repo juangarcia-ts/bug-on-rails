@@ -29,5 +29,6 @@ div.row.projects
           | Excluir conta      
         p
           | Cancele sua conta no botão abaixo
-        = button_to "Confirmar exclusão", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete   
-        = link_to "Voltar", :back     
+        div.button-group.custom-group
+          = button_to "Confirmar exclusão", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'button'  
+          = link_to "Voltar", :back     

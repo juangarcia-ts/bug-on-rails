@@ -1,3 +1,5 @@
+# Botão de abrir/fechar menu hamburguer 
+# (Somente em resoluções menores que 768px)
 $ -> 
     $('#menu-trigger').click -> 
         if $('#menu').is(':visible')

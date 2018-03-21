@@ -110,7 +110,6 @@
 
 .add-button {
   z-index: 999;
-  border: 0.1px solid #000;
   background-color: $primary-color;
   color: $secondary-color;
   position: fixed;
@@ -154,13 +153,6 @@
   }
 }
 
-.button-group {
-  margin: 3% 0%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-
 /***********
     Bugs
 ***********/
@@ -188,6 +180,11 @@
 
 .bug-alert {
   margin-top: 10%;
+
+  @media #{$phone} {
+    max-width: 95%;
+    margin: 30% auto;
+  }
 }
 
 .bug-anchor{

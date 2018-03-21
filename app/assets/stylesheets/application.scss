@@ -46,6 +46,47 @@ body, html {
   }
 }
 
+.button-group {
+  margin: 3% 0%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  a {
+    color: $primary_color;
+  }  
+
+  button, .button {
+    background-color: transparent;
+    border: 1px solid $primary_color;
+
+    &:hover{
+      background-color: $primary_color;
+      color: $secondary_color;
+    }    
+  }
+
+  button {
+    margin-left: 10%;
+
+    @media #{$phone} {
+      justify-content: center;
+      align-items: center;
+      margin-left: 0%;
+    }
+  }
+
+  .button {
+    margin: 3% 0 1.5% 0;
+    font-size: $font_size_h3
+  }
+  
+}
+
+.custom-group{
+  display: initial;
+}
+
 /**************
      Menu 
 ***************/
@@ -146,9 +187,9 @@ ul {
   }    
 }
 
-/**************
-Login e Cadastro
-***************/
+/******************
+  Login e Cadastro
+******************/
 .devise-links{
   color: $secondary_color;
 
