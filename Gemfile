@@ -22,6 +22,7 @@ gem 'slim-rails'
 gem 'devise'
 gem 'html2slim'
 gem 'slack-notifier'
+gem 'rails-controller-testing'
 
 group :development, :test do  
   gem 'byebug', platform: :mri
